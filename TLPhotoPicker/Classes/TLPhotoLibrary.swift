@@ -27,23 +27,23 @@ class TLPhotoLibrary {
         //        print("deinit TLPhotoLibrary")
     }
     
-    @discardableResult
-    func livePhotoAsset(asset: PHAsset, size: CGSize = CGSize(width: 720, height: 1280), progressBlock: Photos.PHAssetImageProgressHandler? = nil, completionBlock:@escaping (PHLivePhoto,Bool)-> Void ) -> PHImageRequestID {
-        let options = PHLivePhotoRequestOptions()
-        options.deliveryMode = .opportunistic
-        options.isNetworkAccessAllowed = true
-        options.progressHandler = progressBlock
-        let scale = min(UIScreen.main.scale,2)
-        let targetSize = CGSize(width: size.width*scale, height: size.height*scale)
-        let requestId = self.imageManager.requestLivePhoto(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options) { (livePhoto, info) in
-            let complete = (info?["PHImageResultIsDegradedKey"] as? Bool) == false
-            if let livePhoto = livePhoto {
-                completionBlock(livePhoto,complete)
-            }
-        }
-        return requestId
-    }
-    
+//    @discardableResult
+//    func livePhotoAsset(asset: PHAsset, size: CGSize = CGSize(width: 720, height: 1280), progressBlock: Photos.PHAssetImageProgressHandler? = nil, completionBlock:@escaping (PHLivePhoto,Bool)-> Void ) -> PHImageRequestID {
+//        let options = PHLivePhotoRequestOptions()
+//        options.deliveryMode = .opportunistic
+//        options.isNetworkAccessAllowed = true
+//        options.progressHandler = progressBlock
+//        let scale = min(UIScreen.main.scale,2)
+//        let targetSize = CGSize(width: size.width*scale, height: size.height*scale)
+//        let requestId = self.imageManager.requestLivePhoto(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options) { (livePhoto, info) in
+//            let complete = (info?["PHImageResultIsDegradedKey"] as? Bool) == false
+//            if let livePhoto = livePhoto {
+//                completionBlock(livePhoto,complete)
+//            }
+//        }
+//        return requestId
+//    }
+
     @discardableResult
     func videoAsset(asset: PHAsset, size: CGSize = CGSize(width: 720, height: 1280), progressBlock: Photos.PHAssetImageProgressHandler? = nil, completionBlock:@escaping (AVPlayerItem?, [AnyHashable : Any]?) -> Void ) -> PHImageRequestID {
         let options = PHVideoRequestOptions()

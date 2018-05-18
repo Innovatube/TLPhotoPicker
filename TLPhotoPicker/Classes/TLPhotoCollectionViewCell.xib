@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,10 +21,6 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0cR-fZ-1bW">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfk-Ao-TKR" customClass="PHLivePhotoView">
-                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TGh-wt-hcR">
                         <rect key="frame" x="70" y="70" width="25" height="25"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -100,20 +96,16 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="vfk-Ao-TKR" secondAttribute="bottom" id="2gw-cO-5bN"/>
                 <constraint firstAttribute="bottom" secondItem="aju-ob-KlZ" secondAttribute="bottom" id="2wo-Ki-15d"/>
                 <constraint firstAttribute="trailing" secondItem="aju-ob-KlZ" secondAttribute="trailing" id="2zm-kD-GPn"/>
                 <constraint firstAttribute="bottom" secondItem="apl-2Q-Hz7" secondAttribute="bottom" id="3zu-V3-EAd"/>
                 <constraint firstAttribute="trailing" secondItem="0cR-fZ-1bW" secondAttribute="trailing" id="9sd-Ea-EBO"/>
-                <constraint firstAttribute="trailing" secondItem="vfk-Ao-TKR" secondAttribute="trailing" id="BZ0-ZG-uW5"/>
                 <constraint firstAttribute="bottom" secondItem="TGh-wt-hcR" secondAttribute="bottom" constant="5" id="Ba1-Z6-ypz"/>
                 <constraint firstItem="0cR-fZ-1bW" firstAttribute="leading" secondItem="IF3-4e-v0j" secondAttribute="leading" id="DXe-M9-mxX"/>
                 <constraint firstItem="aju-ob-KlZ" firstAttribute="leading" secondItem="IF3-4e-v0j" secondAttribute="leading" id="FDl-UE-XVM"/>
                 <constraint firstItem="apl-2Q-Hz7" firstAttribute="top" secondItem="IF3-4e-v0j" secondAttribute="top" id="JlA-ya-cf3"/>
                 <constraint firstAttribute="trailing" secondItem="apl-2Q-Hz7" secondAttribute="trailing" id="KZg-oh-B11"/>
                 <constraint firstAttribute="trailing" secondItem="TGh-wt-hcR" secondAttribute="trailing" constant="5" id="Meo-q5-HyZ"/>
-                <constraint firstItem="vfk-Ao-TKR" firstAttribute="leading" secondItem="IF3-4e-v0j" secondAttribute="leading" id="NOQ-KU-fHD"/>
-                <constraint firstItem="vfk-Ao-TKR" firstAttribute="top" secondItem="IF3-4e-v0j" secondAttribute="top" id="NrV-wc-c3q"/>
                 <constraint firstItem="d1a-KW-Ta4" firstAttribute="height" secondItem="IF3-4e-v0j" secondAttribute="height" constant="10" id="VMJ-Qp-D4N"/>
                 <constraint firstItem="apl-2Q-Hz7" firstAttribute="leading" secondItem="IF3-4e-v0j" secondAttribute="leading" id="bsL-0J-0Y5"/>
                 <constraint firstItem="d1a-KW-Ta4" firstAttribute="width" secondItem="IF3-4e-v0j" secondAttribute="width" constant="10" id="clS-DI-jvL"/>
@@ -130,7 +122,6 @@
                 <outlet property="imageView" destination="0cR-fZ-1bW" id="N3f-v5-K9b"/>
                 <outlet property="indicator" destination="DZc-ag-e55" id="R3y-XL-0SY"/>
                 <outlet property="liveBadgeImageView" destination="TGh-wt-hcR" id="cry-3P-rLI"/>
-                <outlet property="livePhotoView" destination="vfk-Ao-TKR" id="uvj-l1-wcp"/>
                 <outlet property="orderBgView" destination="hbA-dR-I09" id="cQo-BP-xh1"/>
                 <outlet property="orderLabel" destination="Weu-ef-IZ5" id="B3t-X5-o3a"/>
                 <outlet property="playerView" destination="apl-2Q-Hz7" id="vTI-ie-mcV"/>

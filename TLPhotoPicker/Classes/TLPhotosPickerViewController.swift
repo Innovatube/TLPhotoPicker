@@ -650,28 +650,16 @@ extension TLPhotosPickerViewController: PHLivePhotoViewDelegate {
             if requestId > 0 {
                 self.playRequestId = (indexPath,requestId)
             }
-        }else if asset.type == .livePhoto {
-            
-            guard let cell = self.collectionView.cellForItem(at: indexPath) as? TLPhotoCollectionViewCell else { return }
-            let requestId = self.photoLibrary.livePhotoAsset(asset: phAsset, size: self.thumbnailSize, completionBlock: { [weak cell] (livePhoto,complete) in
-                cell?.livePhotoView?.isHidden = false
-                cell?.livePhotoView?.livePhoto = livePhoto
-                cell?.livePhotoView?.isMuted = true
-                cell?.livePhotoView?.startPlayback(with: .hint)
-            })
-            if requestId > 0 {
-                self.playRequestId = (indexPath,requestId)
-            }
         }
     }
     
-    public func livePhotoView(_ livePhotoView: PHLivePhotoView, didEndPlaybackWith playbackStyle: PHLivePhotoViewPlaybackStyle) {
-        livePhotoView.isMuted = true
-        livePhotoView.startPlayback(with: .hint)
-    }
-    
-    public func livePhotoView(_ livePhotoView: PHLivePhotoView, willBeginPlaybackWith playbackStyle: PHLivePhotoViewPlaybackStyle) {
-    }
+//    public func livePhotoView(_ livePhotoView: PHLivePhotoView, didEndPlaybackWith playbackStyle: PHLivePhotoViewPlaybackStyle) {
+//        livePhotoView.isMuted = true
+//        livePhotoView.startPlayback(with: .hint)
+//    }
+//
+//    public func livePhotoView(_ livePhotoView: PHLivePhotoView, willBeginPlaybackWith playbackStyle: PHLivePhotoViewPlaybackStyle) {
+//    }
 }
 
 // MARK: - PHPhotoLibraryChangeObserver
@@ -912,10 +900,10 @@ extension TLPhotosPickerViewController: UICollectionViewDelegate,UICollectionVie
                     }
                 }
             }
-            if self.allowedLivePhotos {
-                cell.liveBadgeImageView?.image = asset.type == .livePhoto ? PHLivePhotoView.livePhotoBadgeImage(options: .overContent) : nil
-                cell.livePhotoView?.delegate = asset.type == .livePhoto ? self : nil
-            }
+//            if self.allowedLivePhotos {
+//                cell.liveBadgeImageView?.image = asset.type == .livePhoto ? PHLivePhotoView.livePhotoBadgeImage(options: .overContent) : nil
+//                cell.livePhotoView?.delegate = asset.type == .livePhoto ? self : nil
+//            }
         }
         cell.alpha = 0
         UIView.transition(with: cell, duration: 0.1, options: .curveEaseIn, animations: {

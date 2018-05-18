@@ -30,9 +30,7 @@ public struct TLPHAsset {
     public var type: AssetType {
         get {
             guard let phAsset = self.phAsset else { return .photo }
-            if phAsset.mediaSubtypes.contains(.photoLive) {
-                return .livePhoto
-            }else if phAsset.mediaType == .video {
+            if phAsset.mediaType == .video {
                 return .video
             }else {
                 return .photo
@@ -70,12 +68,8 @@ public struct TLPHAsset {
     
     public func photoSize(options: PHImageRequestOptions? = nil ,completion: @escaping ((Int)->Void), livePhotoVideoSize: Bool = false) {
         guard let phAsset = self.phAsset, self.type == .photo else { completion(-1); return }
-        var resource: PHAssetResource? = nil
-        if phAsset.mediaSubtypes.contains(.photoLive) == true, livePhotoVideoSize {
-            resource = PHAssetResource.assetResources(for: phAsset).filter { $0.type == .pairedVideo }.first
-        }else {
-            resource = PHAssetResource.assetResources(for: phAsset).filter { $0.type == .photo }.first
-        }
+        let resource: PHAssetResource? = PHAssetResource.assetResources(for: phAsset).filter { $0.type == .photo }.first
+
         if let fileSize = resource?.value(forKey: "fileSize") as? Int {
             completion(fileSize)
         }else {
@@ -142,12 +136,7 @@ public struct TLPHAsset {
     // true  : If you want png file at live photos ( HEIC )
     public func tempCopyMediaFile(videoRequestOptions: PHVideoRequestOptions? = nil, imageRequestOptions: PHImageRequestOptions? = nil, exportPreset: String = AVAssetExportPresetHighestQuality, convertLivePhotosToJPG: Bool = false, progressBlock:((Double) -> Void)? = nil, completionBlock:@escaping ((URL,String) -> Void)) -> PHImageRequestID? {
         guard let phAsset = self.phAsset else { return nil }
-        var type: PHAssetResourceType? = nil
-        if phAsset.mediaSubtypes.contains(.photoLive) == true, convertLivePhotosToJPG == false {
-            type = .pairedVideo
-        }else {
-            type = phAsset.mediaType == .video ? .video : .photo
-        }
+        let type: PHAssetResourceType? = phAsset.mediaType == .video ? .video : .photo
         guard let resource = (PHAssetResource.assetResources(for: phAsset).filter{ $0.type == type }).first else { return nil }
         let fileName = resource.originalFilename
         var writeURL: URL? = nil

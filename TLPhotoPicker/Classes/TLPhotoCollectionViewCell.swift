@@ -33,7 +33,6 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
     private var observer: NSObjectProtocol?
     @IBOutlet open var imageView: UIImageView?
     @IBOutlet open var playerView: TLPlayerView?
-    @IBOutlet open var livePhotoView: PHLivePhotoView?
     @IBOutlet open var liveBadgeImageView: UIImageView?
     @IBOutlet open var durationView: UIView?
     @IBOutlet open var videoIconImageView: UIImageView?
@@ -133,9 +132,6 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
             player.pause()
             self.player = nil
         }
-        self.livePhotoView?.isHidden = true
-        self.livePhotoView?.stopPlayback()
-        self.livePhotoView?.delegate = nil
     }
     
     deinit {
@@ -145,7 +141,6 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
     override open func awakeFromNib() {
         super.awakeFromNib()
         self.playerView?.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        self.livePhotoView?.isHidden = true
         self.durationView?.isHidden = true
         self.selectedView?.isHidden = true
         self.selectedView?.layer.borderWidth = 10
@@ -157,8 +152,6 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
     override open func prepareForReuse() {
         super.prepareForReuse()
         stopPlay()
-        self.livePhotoView?.isHidden = true
-        self.livePhotoView?.delegate = nil
         self.durationView?.isHidden = true
         self.durationView?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         self.selectedHeight?.constant = 10
