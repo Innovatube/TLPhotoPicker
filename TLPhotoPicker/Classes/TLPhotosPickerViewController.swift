@@ -858,6 +858,7 @@ extension TLPhotosPickerViewController: UICollectionViewDelegate,UICollectionVie
                 cell.imageView?.image = self.cameraImage
             }
             cell.willDisplayCell()
+            cell.selectedView?.isHidden = true
             return cell
         }
         guard let asset = collection.getTLAsset(at: indexPath.row) else { return cell }
