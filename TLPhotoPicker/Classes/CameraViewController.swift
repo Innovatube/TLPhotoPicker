@@ -30,65 +30,63 @@ class CameraViewController: UIViewController {
 
         // Setup your camera here...
         session = AVCaptureSession()
-        session!.sessionPreset = AVCaptureSession.Preset.photo
+        if let sessionAV = session {
+            sessionAV.sessionPreset = AVCaptureSession.Preset.photo
+            let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
 
-        let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
-
-        var error: NSError?
-        var input: AVCaptureDeviceInput!
-        do {
-            input = try AVCaptureDeviceInput(device: backCamera!)
-        } catch let error1 as NSError {
-            error = error1
-            input = nil
-            print(error!.localizedDescription)
-        }
-
-        if error == nil && session!.canAddInput(input) {
-            session!.addInput(input)
-            // ...
-            // The remainder of the session setup will go here...
-        }
-
-        stillImageOutput = AVCaptureStillImageOutput()
-        stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-
-        if session!.canAddOutput(stillImageOutput!) {
-            session!.addOutput(stillImageOutput!)
-            // ...
-            // Configure the Live Preview here...
-        }
-
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
-        videoPreviewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            switch UIDevice.current.orientation {
-            case .portrait:
-                videoPreviewLayer!.connection?.videoOrientation = .portrait
-            case .portraitUpsideDown:
-                videoPreviewLayer!.connection?.videoOrientation = .portraitUpsideDown
-            case .landscapeLeft:
-                videoPreviewLayer!.connection?.videoOrientation = .landscapeLeft
-            case .landscapeRight:
-                videoPreviewLayer!.connection?.videoOrientation = .landscapeRight
-            default:
-                videoPreviewLayer!.connection?.videoOrientation = .portrait
+            var error: NSError?
+            var input: AVCaptureDeviceInput!
+            do {
+                input = try AVCaptureDeviceInput(device: backCamera!)
+            } catch let error1 as NSError {
+                error = error1
+                input = nil
+                print(error!.localizedDescription)
             }
-        previewView.layer.addSublayer(videoPreviewLayer!)
-        session!.startRunning()
 
+            if error == nil && sessionAV.canAddInput(input) {
+                sessionAV.addInput(input)
+                // ...
+                // The remainder of the session setup will go here...
+            }
 
-    }
+            stillImageOutput = AVCaptureStillImageOutput()
+            stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-//        if let connection = self.videoPreviewLayer?.connection {
-//            var currentDevice:
-//        }
+            if sessionAV.canAddOutput(stillImageOutput!) {
+                sessionAV.addOutput(stillImageOutput!)
+                // ...
+                // Configure the Live Preview here...
+            }
+
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: sessionAV)
+            if let videoLayer = videoPreviewLayer {
+                videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+                switch UIDevice.current.orientation {
+                case .portrait:
+                    videoLayer.connection?.videoOrientation = .portrait
+                case .portraitUpsideDown:
+                    videoLayer.connection?.videoOrientation = .portraitUpsideDown
+                case .landscapeLeft:
+                    videoLayer.connection?.videoOrientation = .landscapeLeft
+                case .landscapeRight:
+                    videoLayer.connection?.videoOrientation = .landscapeRight
+                default:
+                    videoLayer.connection?.videoOrientation = .portrait
+                }
+                previewView.layer.addSublayer(videoLayer)
+                sessionAV.startRunning()
+            }
+        }
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        videoPreviewLayer!.frame = previewView.bounds
+        if let videoLayer = videoPreviewLayer {
+            videoLayer.frame = previewView.bounds
+        }
+
     }
 
     @IBAction func didPressTakePhoto(sender: UIButton) {
