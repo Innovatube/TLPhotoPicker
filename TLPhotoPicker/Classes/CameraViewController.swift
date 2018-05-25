@@ -28,10 +28,6 @@ class CameraViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        //setup UI
-        imgTakePhoto.image = #imageLiteral(resourceName: "takePhoto.png")
-        btnCancel.setImage(#imageLiteral(resourceName: "cancel.png"), for: .normal)
-
         // Setup your camera here...
         session = AVCaptureSession()
         session!.sessionPreset = AVCaptureSession.Preset.photo
