@@ -40,6 +40,8 @@
 		18465DBA206E8AFD0015A715 /* TLPhotoPickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TLPhotoPickerController.bundle; sourceTree = SOURCE_ROOT; };
 		BD0AD55A20B8011700D24699 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Classes/CameraViewController.swift; sourceTree = SOURCE_ROOT; };
 		BD0AD55B20B8011700D24699 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraViewController.xib; path = Classes/CameraViewController.xib; sourceTree = SOURCE_ROOT; };
+		BD0AD55E20B8094900D24699 /* cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@3x.png"; sourceTree = "<group>"; };
+		BD0AD55F20B8094C00D24699 /* takePhoto@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "takePhoto@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,8 @@
 				BD0AD55A20B8011700D24699 /* CameraViewController.swift */,
 				BD0AD55B20B8011700D24699 /* CameraViewController.xib */,
 				18465DBA206E8AFD0015A715 /* TLPhotoPickerController.bundle */,
+				BD0AD55F20B8094C00D24699 /* takePhoto@3x.png */,
+				BD0AD55E20B8094900D24699 /* cancel@3x.png */,
 				18465DAC206E8AEB0015A715 /* TLAlbumPopView.swift */,
 				18465DAD206E8AEB0015A715 /* TLAssetsCollection.swift */,
 				18465DA9206E8AEB0015A715 /* TLBundle.swift */,

@@ -29,8 +29,8 @@ class CameraViewController: UIViewController {
         super.viewWillAppear(animated)
 
         //setup UI
-        imgTakePhoto.image = TLBundle.podBundleImage(named: "takePhoto")
-        btnCancel.setImage(TLBundle.podBundleImage(named: "cancel"), for: .normal)
+        imgTakePhoto.image = #imageLiteral(resourceName: "takePhoto.png")
+        btnCancel.setImage(#imageLiteral(resourceName: "cancel.png"), for: .normal)
 
         // Setup your camera here...
         session = AVCaptureSession()
