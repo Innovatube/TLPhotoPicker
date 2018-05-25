@@ -1,10 +1,10 @@
 use_frameworks!
 inhibit_all_warnings!
 
-platform :ios, '9.1'
+platform :ios, '9.0'
 
 target 'TLPhotoPicker_Example' do
-    pod 'TLPhotoPicker', :path => '../'
+        pod 'TLPhotoPicker', :git => 'https://github.com/brian-tran16/TLPhotoPicker', :branch => 'master'
 
   target 'TLPhotoPicker_Tests' do
     inherit! :search_paths

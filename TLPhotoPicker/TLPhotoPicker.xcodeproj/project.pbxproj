@@ -19,6 +19,8 @@
 		18465DB8206E8AEB0015A715 /* TLPhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18465DAE206E8AEB0015A715 /* TLPhotoLibrary.swift */; };
 		18465DB9206E8AEB0015A715 /* TLPhotosPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18465DAF206E8AEB0015A715 /* TLPhotosPickerViewController.xib */; };
 		18465DBB206E8AFD0015A715 /* TLPhotoPickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18465DBA206E8AFD0015A715 /* TLPhotoPickerController.bundle */; };
+		BD0AD55820B7F97100D24699 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD55620B7F97100D24699 /* CameraViewController.swift */; };
+		BD0AD55920B7F97100D24699 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD55720B7F97100D24699 /* CameraViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		18465DAE206E8AEB0015A715 /* TLPhotoLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TLPhotoLibrary.swift; path = Classes/TLPhotoLibrary.swift; sourceTree = SOURCE_ROOT; };
 		18465DAF206E8AEB0015A715 /* TLPhotosPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TLPhotosPickerViewController.xib; path = Classes/TLPhotosPickerViewController.xib; sourceTree = SOURCE_ROOT; };
 		18465DBA206E8AFD0015A715 /* TLPhotoPickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TLPhotoPickerController.bundle; sourceTree = SOURCE_ROOT; };
+		BD0AD55620B7F97100D24699 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		BD0AD55720B7F97100D24699 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 				18465DAE206E8AEB0015A715 /* TLPhotoLibrary.swift */,
 				18465DA6206E8AEB0015A715 /* TLPhotosPickerViewController.swift */,
 				18465DAF206E8AEB0015A715 /* TLPhotosPickerViewController.xib */,
+				BD0AD55620B7F97100D24699 /* CameraViewController.swift */,
+				BD0AD55720B7F97100D24699 /* CameraViewController.xib */,
 				18465D9E206E8A8B0015A715 /* TLPhotoPicker.h */,
 				18465D9F206E8A8B0015A715 /* Info.plist */,
 			);
@@ -159,6 +165,7 @@
 				18465DB9206E8AEB0015A715 /* TLPhotosPickerViewController.xib in Resources */,
 				18465DBB206E8AFD0015A715 /* TLPhotoPickerController.bundle in Resources */,
 				18465DB2206E8AEB0015A715 /* TLPhotoCollectionViewCell.xib in Resources */,
+				BD0AD55920B7F97100D24699 /* CameraViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +181,7 @@
 				18465DB7206E8AEB0015A715 /* TLAssetsCollection.swift in Sources */,
 				18465DB5206E8AEB0015A715 /* TLCollectionTableViewCell.swift in Sources */,
 				18465DB8206E8AEB0015A715 /* TLPhotoLibrary.swift in Sources */,
+				BD0AD55820B7F97100D24699 /* CameraViewController.swift in Sources */,
 				18465DB4206E8AEB0015A715 /* TLPhotoCollectionViewCell.swift in Sources */,
 				18465DB3206E8AEB0015A715 /* TLBundle.swift in Sources */,
 			);

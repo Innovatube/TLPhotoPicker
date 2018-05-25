@@ -18,11 +18,11 @@ open class TLPlayerView: UIView {
             playerLayer.player = newValue
         }
     }
-    
+
     @objc open var playerLayer: AVPlayerLayer {
         return layer as! AVPlayerLayer
     }
-    
+
     // Override UIView property
     override open static var layerClass: AnyClass {
         return AVPlayerLayer.self
@@ -42,7 +42,7 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet open var selectedHeight: NSLayoutConstraint?
     @IBOutlet open var orderLabel: UILabel?
     @IBOutlet open var orderBgView: UIView?
-    
+
     var configure = TLPhotosPickerConfigure() {
         didSet {
             self.selectedView?.layer.borderColor = self.configure.selectedColor.cgColor
@@ -50,9 +50,9 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
             self.videoIconImageView?.image = self.configure.videoIcon
         }
     }
-    
+
     @objc open var isCameraCell = false
-    
+
     open var duration: TimeInterval? {
         didSet {
             guard let duration = self.duration else { return }
@@ -60,7 +60,7 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
             self.durationLabel?.text = timeFormatted(timeInterval: duration)
         }
     }
-    
+
     @objc open var player: AVPlayer? = nil {
         didSet {
             if self.configure.autoPlay == false { return }
@@ -80,17 +80,23 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
+
     @objc open var selectedAsset: Bool = false {
         willSet(newValue) {
-            self.selectedView?.isHidden = !newValue
+            if newValue {
+                self.orderBgView?.backgroundColor = self.configure.selectedColor
+            } else {
+                self.orderBgView?.layer.borderColor = UIColor.white.cgColor
+                self.orderBgView?.layer.borderWidth = 1
+                self.orderBgView?.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+            }
             self.durationView?.backgroundColor = newValue ? self.configure.selectedColor : UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
             if !newValue {
                 self.orderLabel?.text = ""
             }
         }
     }
-    
+
     @objc open func timeFormatted(timeInterval: TimeInterval) -> String {
         let seconds: Int = lround(timeInterval)
         var hour: Int = 0
@@ -104,7 +110,7 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
             return String(format: "%d:%02d", minute, second)
         }
     }
-    
+
     @objc open func popScaleAnim() {
         UIView.animate(withDuration: 0.1, animations: {
             self.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
@@ -114,41 +120,41 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
             })
         }
     }
-    
+
     @objc open func selectedCell() {
-        
+
     }
-    
+
     @objc open func willDisplayCell() {
-        
+
     }
-    
+
     @objc open func endDisplayingCell() {
-        
+
     }
-    
+
     @objc func stopPlay() {
         if let player = self.player {
             player.pause()
             self.player = nil
         }
     }
-    
+
     deinit {
-//        print("deinit TLPhotoCollectionViewCell")
+        //        print("deinit TLPhotoCollectionViewCell")
     }
-    
+
     override open func awakeFromNib() {
         super.awakeFromNib()
         self.playerView?.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.durationView?.isHidden = true
-        self.selectedView?.isHidden = true
-        self.selectedView?.layer.borderWidth = 10
-        self.selectedView?.layer.cornerRadius = 15
-        self.orderBgView?.layer.cornerRadius = 2
+        self.selectedView?.isHidden = false
+        //        self.selectedView?.layer.borderWidth = 10
+        //        self.selectedView?.layer.cornerRadius = 15
+        self.orderBgView?.layer.cornerRadius = (self.orderBgView!.frame.height / 2 ?? 0)
         self.videoIconImageView?.image = self.configure.videoIcon
     }
-    
+
     override open func prepareForReuse() {
         super.prepareForReuse()
         stopPlay()

@@ -498,7 +498,7 @@ extension TLPhotosPickerViewController: TLPhotoLibraryDelegate {
 }
 
 // MARK: - Camera Picker
-extension TLPhotosPickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension TLPhotosPickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, CameraDelegate {
     fileprivate func showCameraIfAuthorized() {
         let cameraAuthorization = AVCaptureDevice.authorizationStatus(for: .video)
         switch cameraAuthorization {
@@ -521,19 +521,37 @@ extension TLPhotosPickerViewController: UIImagePickerControllerDelegate, UINavig
 
     fileprivate func showCamera() {
         guard !maxCheck() else { return }
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.mediaTypes = [kUTTypeImage as String]
-        if self.configure.allowedVideoRecording {
-            picker.mediaTypes.append(kUTTypeMovie as String)
-            picker.videoQuality = self.configure.recordingVideoQuality
-            if let duration = self.configure.maxVideoDuration {
-                picker.videoMaximumDuration = duration
+        let cameraVC = CameraViewController()
+        cameraVC.cameraDelegate = self
+        self.present(cameraVC, animated: true, completion: nil)
+//        let picker = UIImagePickerController()
+//        picker.sourceType = .camera
+//        picker.mediaTypes = [kUTTypeImage as String]
+//        if self.configure.allowedVideoRecording {
+//            picker.mediaTypes.append(kUTTypeMovie as String)
+//            picker.videoQuality = self.configure.recordingVideoQuality
+//            if let duration = self.configure.maxVideoDuration {
+//                picker.videoMaximumDuration = duration
+//            }
+//        }
+//        picker.allowsEditing = false
+//        picker.delegate = self
+//        self.present(picker, animated: true, completion: nil)
+    }
+
+    func getImageFromCamera(image: UIImage) {
+        var placeholderAsset: PHObjectPlaceholder? = nil
+        PHPhotoLibrary.shared().performChanges({
+            let newAssetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
+            placeholderAsset = newAssetRequest.placeholderForCreatedAsset
+        }, completionHandler: { [weak self] (sucess, error) in
+            if sucess, let `self` = self, let identifier = placeholderAsset?.localIdentifier {
+                guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject else { return }
+                var result = TLPHAsset(asset: asset)
+                result.selectedOrder = self.selectedAssets.count + 1
+                self.selectedAssets.append(result)
             }
-        }
-        picker.allowsEditing = false
-        picker.delegate = self
-        self.present(picker, animated: true, completion: nil)
+        })
     }
 
     fileprivate func handleDeniedAlbumsAuthorization() {

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController" customModule="DemoTLPhotoPicker" customModuleProvider="target">
+            <connections>
+                <outlet property="btnCancel" destination="Oc3-dW-3Ca" id="EgD-Gk-0WX"/>
+                <outlet property="imgTakePhoto" destination="CZF-FN-m9T" id="N7S-Sq-PGh"/>
+                <outlet property="previewView" destination="N0f-SA-BhT" id="OGs-pb-cfA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0f-SA-BhT">
+                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CZF-FN-m9T">
+                    <rect key="frame" x="311" y="310" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="CZF-FN-m9T" secondAttribute="height" multiplier="1:1" id="x4x-Nc-i9N"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diL-OA-iCK">
+                    <rect key="frame" x="311" y="310" width="45" height="45"/>
+                    <connections>
+                        <action selector="didPressTakePhotoWithSender:" destination="-1" eventType="touchUpInside" id="5gE-r4-zJD"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc3-dW-3Ca" userLabel="Cancel">
+                    <rect key="frame" x="16" y="32" width="30" height="30"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="dismissCamera" destination="-1" eventType="touchUpInside" id="0hA-dz-kw4"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="N0f-SA-BhT" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="1kB-gf-Zlg"/>
+                <constraint firstItem="N0f-SA-BhT" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="4J0-wI-Jkw"/>
+                <constraint firstItem="CZF-FN-m9T" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.12" id="AOv-XY-0dB"/>
+                <constraint firstItem="diL-OA-iCK" firstAttribute="centerX" secondItem="CZF-FN-m9T" secondAttribute="centerX" id="Hhj-Mv-ksP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="CZF-FN-m9T" secondAttribute="bottom" constant="20" id="L5o-4S-gi5"/>
+                <constraint firstItem="diL-OA-iCK" firstAttribute="centerY" secondItem="CZF-FN-m9T" secondAttribute="centerY" id="M0c-qi-9Rb"/>
+                <constraint firstItem="N0f-SA-BhT" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="OTe-6u-kMM"/>
+                <constraint firstItem="CZF-FN-m9T" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="P7U-uk-5G3"/>
+                <constraint firstItem="Oc3-dW-3Ca" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="aeR-Gw-S2N"/>
+                <constraint firstItem="N0f-SA-BhT" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="af3-wV-4E7"/>
+                <constraint firstItem="diL-OA-iCK" firstAttribute="height" secondItem="CZF-FN-m9T" secondAttribute="height" id="eA3-Be-KCI"/>
+                <constraint firstItem="diL-OA-iCK" firstAttribute="width" secondItem="CZF-FN-m9T" secondAttribute="width" id="nLr-CZ-BvB"/>
+                <constraint firstItem="Oc3-dW-3Ca" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="sbX-Uq-zUT"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1f7-Kq-tv9">
+            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Button"/>
+        </button>
+    </objects>
+</document>
