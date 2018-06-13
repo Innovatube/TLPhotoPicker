@@ -42,8 +42,8 @@
 		18465DBA206E8AFD0015A715 /* TLPhotoPickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TLPhotoPickerController.bundle; sourceTree = SOURCE_ROOT; };
 		BD0AD55A20B8011700D24699 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Classes/CameraViewController.swift; sourceTree = SOURCE_ROOT; };
 		BD0AD55B20B8011700D24699 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraViewController.xib; path = Classes/CameraViewController.xib; sourceTree = SOURCE_ROOT; };
-		BDCFA0E820C938FD0014F339 /* PhotoTouchPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTouchPreviewViewController.xib; sourceTree = "<group>"; };
-		BDCFA0E920C938FE0014F339 /* PhotoTouchPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTouchPreviewViewController.swift; sourceTree = "<group>"; };
+		BDCFA0E820C938FD0014F339 /* PhotoTouchPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoTouchPreviewViewController.xib; path = ../Classes/PhotoTouchPreviewViewController.xib; sourceTree = "<group>"; };
+		BDCFA0E920C938FE0014F339 /* PhotoTouchPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoTouchPreviewViewController.swift; path = ../Classes/PhotoTouchPreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
