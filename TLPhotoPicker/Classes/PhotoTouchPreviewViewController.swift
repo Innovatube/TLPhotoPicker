@@ -11,8 +11,8 @@ import UIKit
 class PhotoTouchPreviewViewController: UIViewController {
 
     @IBOutlet weak var imgPreview: UIImageView!
-    var image: UIImage?
-    init(image: UIImage?) {
+    var image: UIImage = UIImage()
+    init(image: UIImage) {
         self.image = image
         super.init(nibName: nil, bundle: nil)
     }
@@ -22,10 +22,8 @@ class PhotoTouchPreviewViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(image?.size)")
-        if let image123 = image {
-            imgPreview.image = image123
-        }
+        print("\(image.size)")
+        imgPreview.image = image
 //        imgPreview.image = #imageLiteral(resourceName: "arrow.png")
 
         // Do any additional setup after loading the view.

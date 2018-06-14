@@ -1012,10 +1012,11 @@ extension TLPhotosPickerViewController: PeekPopPreviewingDelegate {
             guard let collection = self.focusedCollection, let cell = self.collectionView.cellForItem(at: indexPath) as? TLPhotoCollectionViewCell else { return nil }
             guard let asset = collection.getTLAsset(at: indexPath.row) else { return nil }
             guard self.focusedCollection != nil else { return nil }
-            let image = asset.fullResolutionImage
-            let vc = PhotoTouchPreviewViewController(image: (image))
-            previewingContext.sourceRect = cell.frame
-            return vc
+            if let image = asset.fullResolutionImage {
+                let vc = PhotoTouchPreviewViewController(image: (image))
+                previewingContext.sourceRect = cell.frame
+                return vc
+            }
         }
         return nil
     }
