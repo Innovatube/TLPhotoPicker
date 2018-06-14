@@ -159,6 +159,7 @@ open class TLPhotosPickerViewController: UIViewController {
     fileprivate var thumbnailSize = CGSize.zero
     fileprivate var placeholderThumbnail: UIImage? = nil
     fileprivate var cameraImage: UIImage? = nil
+    var peekPop: PeekPop?
 
     deinit {
         //print("deinit TLPhotosPickerViewController")
@@ -217,9 +218,8 @@ open class TLPhotosPickerViewController: UIViewController {
         super.viewDidLoad()
         makeUI()
         checkAuthorization()
-        //        if( traitCollection.forceTouchCapability == .available) {
-        registerForPreviewing(with: self, sourceView: view)
-        //        }
+        peekPop = PeekPop(viewController: self)
+        peekPop?.registerForPreviewingWithDelegate(self, sourceView: self.collectionView)
     }
 
     override open func viewDidLayoutSubviews() {
@@ -1005,10 +1005,9 @@ extension TLPhotosPickerViewController: UITableViewDelegate,UITableViewDataSourc
     }
 }
 
-extension TLPhotosPickerViewController: UIViewControllerPreviewingDelegate {
-    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController?
-    {
-
+extension TLPhotosPickerViewController: PeekPopPreviewingDelegate {
+    
+    public func previewingContext(_ previewingContext: PreviewingContext, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let indexPath = collectionView.indexPathForItem(at: location) {
             guard let collection = self.focusedCollection, let cell = self.collectionView.cellForItem(at: indexPath) as? TLPhotoCollectionViewCell else { return nil }
             guard let asset = collection.getTLAsset(at: indexPath.row) else { return nil }
@@ -1021,9 +1020,7 @@ extension TLPhotosPickerViewController: UIViewControllerPreviewingDelegate {
         return nil
     }
 
-    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
-    {
-        // Present or push the view controller
-        //        present(viewControllerToCommit, animated: true)
+    public func previewingContext(_ previewingContext: PreviewingContext, commitViewController viewControllerToCommit: UIViewController) {
+
     }
 }
