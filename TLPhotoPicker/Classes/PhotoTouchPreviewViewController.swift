@@ -11,20 +11,23 @@ import UIKit
 class PhotoTouchPreviewViewController: UIViewController {
 
     @IBOutlet weak var imgPreview: UIImageView!
-    var image: UIImage = UIImage()
-    init(image: UIImage) {
+    var image: UIImage?
+
+    public init(image: UIImage) {
+        super.init(nibName: "PhotoTouchPreviewViewController", bundle: Bundle(for: PhotoTouchPreviewViewController.self))
         self.image = image
-        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(image.size)")
-        imgPreview.image = image
-//        imgPreview.image = #imageLiteral(resourceName: "arrow.png")
+        print("\(image?.size)")
+        if let preImage = image {
+            imgPreview.image = preImage
+        }
+        //        imgPreview.image = #imageLiteral(resourceName: "arrow.png")
 
         // Do any additional setup after loading the view.
     }
@@ -33,16 +36,5 @@ class PhotoTouchPreviewViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
