@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoTouchPreviewViewController" customModule="DemoTLPhotoPicker" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoTouchPreviewViewController" customModule="TLPhotoPicker" customModuleProvider="target">
             <connections>
                 <outlet property="imgPreview" destination="JOr-Wp-tYz" id="2fu-Pn-8Ty"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JOr-Wp-tYz">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JOr-Wp-tYz">
                     <rect key="frame" x="0.0" y="156" width="375" height="375"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="JOr-Wp-tYz" secondAttribute="height" multiplier="1:1" id="bfO-Ce-zzW"/>
